@@ -1,39 +1,91 @@
+// types/index.ts
 export interface Category {
-  id: string;
+  id: number;
   name: string;
-  icon: string; // Icon name or path
-  description?: string;
-  createdAt: string;
-  updatedAt: string;
-  productsCount?: number;
+  icon: string;
+  productCount: number;
 }
 
 export interface Product {
-  id: string;
+  id: number;
+  categoryId?: number;
   name: string;
-  description?: string;
-  weight: number;
-  weightUnit: "kg" | "g" | "mg" | "ml" | "l";
-  categoryId: string;
-  attachments: ProductAttachment[];
-  createdAt: string;
-  updatedAt: string;
+  description: string;
+  size: string;
+  brand: string;
+  color: string;
+  attachments: string[];
+  weight?: number;
 }
 
-export interface ProductAttachment {
-  id: string;
-  fileName: string;
-  fileUrl: string;
-  fileType: "image" | "video";
-  fileSize: number;
+export interface CategoryFormData {
+  name: string;
+  icon: string;
 }
 
-export interface GetCategoriesResponse {
-  count: number;
-  rows: Category[];
+export interface ProductFormData {
+  name: string;
+  description: string;
+  size: string;
+  brand: string;
+  color: string;
+  attachments: string[];
+  weight?: number;
 }
 
-export interface GetProductsResponse {
-  count: number;
-  rows: Product[];
+export interface UserData {
+  name: string;
+  email: string;
+  phone: string;
+  categories: Category[];
+  products: { [categoryId: number]: Product[] };
+  avatarUrl?: string;
 }
+
+export interface RegistrationFormData {
+  name: string;
+  phone: string;
+  email: string;
+  password: string;
+}
+
+export interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  password?: string;
+}
+
+// export interface Category {
+//   id: number;
+//   name: string;
+//   icon: string;
+//   productCount: number;
+// }
+
+// export interface Product {
+//   id: number;
+//   name: string;
+//   description: string;
+//   size: string;
+//   brand: string;
+//   color: string;
+//   attachments: string[];
+//   categoryId: number;
+//   weight?: number;
+// }
+
+// export interface ProductFormData {
+//   name: string;
+//   description: string;
+//   size: string;
+//   brand: string;
+//   color: string;
+//   attachments: string[];
+//   weight?: number;
+// }
+
+// export interface CategoryFormData {
+//   name: string;
+//   icon: string;
+// }
